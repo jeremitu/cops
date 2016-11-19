@@ -83,8 +83,10 @@ $mail->AltBody = "Sent by COPS";
 if (!$mail->Send()) {
    echo localize ("mail.messagenotsent");
    echo 'Mailer Error: ' . $mail->ErrorInfo;
+   mylog("Mail error " . $book->getBookName() . ' to ' . $emailDest . ' ' . $mail->ErrorInfo);
    exit;
 }
 
 echo localize ("mail.messagesent");
+mylog("Mail " . $book->getBookName() . ' to ' . $emailDest );
 
