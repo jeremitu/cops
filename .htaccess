@@ -74,9 +74,16 @@ ExpiresByType text/javascript "access plus 1 year"
 # without authentication (see $config ['cops_fetch_protect'] for a workaround).
 ###########################################
 #<FilesMatch "\.php$">
-#AuthUserFile /path/to/file
+<FilesMatch "(index|feed)\.php">
+#cannot use relative path http://stackoverflow.com/questions/6111627/how-to-use-a-relative-path-with-authuserfile-in-htaccess
+#AuthUserFile /var/www/virtual/jurasz.de/books/.htpasswd
+AuthUserFile /var/www/books/.htpasswd
+<IfDefine DEV>
+  AuthUserFile c:\MAMP\books\.htpasswd
+</IfDefine>
 #AuthGroupFile /dev/null
-#AuthName "Acces securise"
-#AuthType Basic
-#Require valid-user
-#</FilesMatch>
+AuthName "BOOKS"
+AuthType Basic
+Require valid-user
+#Allow from env=DEV
+</FilesMatch>
