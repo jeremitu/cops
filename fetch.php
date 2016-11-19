@@ -102,7 +102,6 @@
             header("Content-Type: " . $data->getMimeType ());
             break;
     }
-    mylog("Download " . $book->getBookName());
     $file = $book->getFilePath ($type, $idData, true);
     if ($type == "epub" && $config['cops_update_epub-metadata'])
     {
@@ -113,6 +112,7 @@
         header('Content-Disposition: filename="' . basename ($file) . '"');
     } else {
         header('Content-Disposition: attachment; filename="' . basename ($file) . '"');
+        mylog("Download " . $book->getBookName());
     }
 
     $dir = $config['calibre_internal_directory'];
