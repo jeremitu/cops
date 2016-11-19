@@ -150,6 +150,7 @@ class JSONRenderer
                            "sortAlt" => localize ("sort.alternate"),
                            "homeAlt" => localize ("home.alternate"),
                            "cogAlt" => localize ("cog.alternate"),
+                           "helpAlt" => localize ("help.alternate"),
                            "permalinkAlt" => localize ("permalink.alternate"),
                            "publisherName" => localize("publisher.name"),
                            "pubdateTitle" => localize("pubdate.title"),
