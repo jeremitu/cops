@@ -269,6 +269,18 @@ function handleFilterEvents () {
     });
 }
 
+var readString;
+readString = function(path)
+{
+    var request = new XMLHttpRequest();
+    request.open("GET", path, false);
+    request.send(null);
+    var returnValue = request.responseText;
+
+    return returnValue;
+}
+
+
 /************************************************
  * Functions to handle Ajax navigation
  ************************************************
@@ -297,7 +309,7 @@ updatePage = function (data) {
 
     debug_log (elapsed ());
 
-    if ($.cookie('toolbar') === '1') { $("#tool").show (); }
+    if (! $("#tool").is(":visible") || ($.cookie('toolbar') === '1')) { $("#tool").show (); }
     if (currentData.containsBook === 1) {
         $("#sortForm").show ();
         if (getCurrentOption ("html_tag_filter") === "1") {
@@ -374,6 +386,7 @@ function link_Clicked (event) {
         $.getJSON(jsonurl, function(data) {
             data.c = currentData.c;
             var detail = "";
+            //debug_log(data);
             if (data.page === "16") {
                 detail = data.fullhtml;
             } else {
@@ -402,6 +415,7 @@ function search_Submitted (event) {
     navigateTo (url);
 }
 
+
 /*exported handleLinks */
 function handleLinks () {
     $("body").on ("click", "a[href^='index']", link_Clicked);
@@ -417,6 +431,7 @@ function handleLinks () {
         });
     });
 
+/*
     $("body").on ("click", ".headright", function(){
         if ($("#tool").is(":hidden")) {
             $("#tool").slideDown("slow");
@@ -427,6 +442,19 @@ function handleLinks () {
             $.removeCookie('toolbar');
         }
     });
+*/
+    $("body").on ("click", ".headright", function() {
+        //navigateTo("3grosze.html");
+        //location.href = "3grosze.html"
+        var detail = readString("3grosze.html"); // no AJAX
+        $.magnificPopup.open({
+              items: {
+                src: detail,
+                type: 'inline'
+              }
+            });
+    });
+
     $("body").magnificPopup({
         delegate: '.fancycover', // child items selector, by clicking on it popup will open
         type: 'image',

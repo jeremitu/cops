@@ -1,0 +1,34 @@
+﻿<div class="bookpopup" style="max-width:700px;">
+<h1>Objaśnienia, oświecenia</h1>
+<h2>Jak korzystać?</h2>
+<p>To są półki z książkami, którymi dzielimy się z wzajemnością z rodziną i znajomymi.</p>
+<p>Większość książek na półkach jest w formatach EPUB (otwarty format, dla większości czytników i tabletów) i MOBI (dla Kindle), czasem w PDF.</p>
+<p>Książki stąd można:
+<p><i class="icon-plus icon-small"></i> czytać bezpośrednio na serwerze (<i class="icon-eye-open icon-large"></i> - format EPUB),</p>
+<p><i class="icon-plus icon-small"></i> przeglądać i ściągać w przeglądarce na PC, czytnik czy tablet, podając adres <a href="https://books.jurasz.de">https://books.jurasz.de</a>,</p>
+<p><i class="icon-plus icon-small"></i> wysłać mailem (<i class="icon-envelope icon-large"></i>) na Kindle (więcej niżej) lub inny adres e-mail. Nie musi być Twój (zajrzyj w ustawienia),</p>
+<p><i class="icon-plus icon-small"></i> przeglądać i czytać w aplikacji Aldiko, Mantano Reader itd. <a href="https://en.wikipedia.org/wiki/OPDS">w formacie OPDS</a> podając adres <a href="https://books.jurasz.de/feed.php">https://books.jurasz.de/feed.php</a></p>
+<p>Gdyby brakowało Ci jakiejś książki albo formatu, proszę o <a href="mailto:jarek@jurasz.de">kontakt</a>.</p>
+<h2>Dodaj książki!</h2>
+<p>Jeśli skorzystałeś/skorzystałaś z tych półek i chcesz coś na nie dołożyć, możesz to zrobić tutaj. Książki najpierw przejdą przez moje ręce i zostaną potraktowane tak samo jak te, które tu włożyłem. Postaram się usunąć watermarki i nie powinny dostać się w niepowołane ręce. Najbardziej lubię format EPUB. Jeśli będę miał wątpliwości, zapytam.</p>
+<form enctype="multipart/form-data" action="upload.php" method="POST">
+    <!-- MAX_FILE_SIZE must precede the file input field -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
+    <!-- Name of input element determines name in $_FILES array -->
+    Wyślij plik (.epub, .mobi, .pdf, .zip): <input name="userfile" type="file" accept=".pdf,.epub,.mobi,.zip"/>
+    <input type="submit" value="Upload" />
+</form>
+<h2>Kindle</h2>
+<p>Możesz wysłać książkę z serwera na adres mailowy swojego Kindla (<i class="icon-envelope icon-large"></i>). Możesz go sprawdzić i warto go zmienić na koncie Amazon.com, np. jako imie.nazwisko@kindle.com. Żeby maile przychodziły na Kindla, dodaj *@jurasz.de i jarek.jurasz@gmail.com jako dozwolone adresy na koncie Amazona.</p>
+<p>"Experimental Browser" na Kindlu działa całkiem przyzwoicie jako przeglądarka półek.</p>
+<h2>Technika <a href="https://calibre-ebook.com"><img src="images\icons\icon57.png"></a></h2>
+<p>Półki podpiera <a href="http://blog.slucas.fr/en/oss/calibre-opds-php-server">COPS</a> napisany przez Sébastiena Lucasa. COPS to napisany w PHP serwer HTML i OPDS, wykorzystujący bibliotekę i bazę danych <a href="https://calibre-ebook.com">Calibre</a> Kovida Goyala. To co tu widzisz, to zbierana przez lata biblioteka Calibre, którą synchronizuję z serwerem.</p>
+<h2>Rady</h2>
+<p>Jeśli nie możesz zalogować się na serwer z czytnika (np. Kobo), spróbuj <a href="https://books.jurasz.de/login.html">https://books.jurasz.de/login.html</a></p>
+<p>Jeśli coś nie działa, <a href="mailto:jarek@jurasz.de">daj mi znać</a></p>
+<h2>Historia</h2>
+<p>18.11.2016 Dodałem te 3 grosze i listę mailingową <a href="mailto:books-users@jurasz.de">books-users@jurasz.de</a> </p>
+<p>9-11.2016 Drobne zmiany. Rewriting dla czytnika Kobo. Język polski na sztywno. Wyłączyłem ukrywanie toolbara.</p>
+<p>28.10.2016 przeprowadzka do słonecznej Toskanii, auto HTTPS, ponad 2000 książek.</p>
+<p>25.06.2014 start, około 80 książek.</p>
+</div>
