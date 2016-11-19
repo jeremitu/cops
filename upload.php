@@ -8,6 +8,7 @@ $tmp_name = $_FILES['userfile']['tmp_name'];
 if (move_uploaded_file($tmp_name, $uploadfile)) {
     echo "File is valid, and was successfully uploaded.";
     mylog("Upload ok " . $uploadfile );
+    // mail?
 } else {
     echo "Error!";
     //echo 'Here is some more debugging info:';
