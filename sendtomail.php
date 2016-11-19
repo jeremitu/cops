@@ -45,7 +45,7 @@ if ($error = checkRequest ($idData, $emailDest)) {
 $book = Book::getBookByDataId($idData);
 $data = $book->getDataById ($idData);
 
-if (filesize ($data->getLocalPath ()) > 10 * 1024 * 1024) {
+if (filesize ($data->getLocalPath ()) > 100 * 1024 * 1024) {
     echo 'Attachment too big';
     exit;
 }
