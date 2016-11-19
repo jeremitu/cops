@@ -178,6 +178,11 @@ class Book extends Base {
         return implode (", ", array_map (function ($author) { return $author->sort; }, $this->getAuthors ()));
     }
 
+    // JJ see data getUpdatedFilename()
+    public function getBookName () {
+      return  $this->getAuthorsName () . " - " .  $this->title;
+    }
+
     public function getPublisher () {
         if (is_null ($this->publisher)) {
             $this->publisher = Publisher::getPublisherByBookId ($this->id);
