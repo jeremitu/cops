@@ -6,11 +6,13 @@ See : [COPS's home](http://blog.slucas.fr/en/oss/calibre-opds-php-server) for mo
 
 Don't forget to check the [Wiki](https://github.com/seblucas/cops/wiki).
 
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/seblucas/cops/badges/quality-score.png?s=e1c87a92ef90b8d666cd9bd4f3612bd10db84364)](https://scrutinizer-ci.com/g/seblucas/cops/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/seblucas/cops/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/seblucas/cops/?branch=master)
 
-[![Code Coverage](https://scrutinizer-ci.com/g/seblucas/cops/badges/coverage.png?s=1e21d8c3bf96d7b0b7cc0e54429fa897ddea1506)](https://scrutinizer-ci.com/g/seblucas/cops/)
+[![Code Coverage](https://scrutinizer-ci.com/g/seblucas/cops/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/seblucas/cops/?branch=master)
 
-[![Build Status](https://travis-ci.org/seblucas/cops.png)](https://travis-ci.org/seblucas/cops)
+[![Build Status / Scrutinizer](https://scrutinizer-ci.com/g/seblucas/cops/badges/build.png?b=master)](https://scrutinizer-ci.com/g/seblucas/cops/build-status/master)
+
+[![Build Status](https://travis-ci.org/seblucas/cops.svg?branch=master)](https://travis-ci.org/seblucas/cops)
 
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/seblucas.svg)](https://saucelabs.com/u/seblucas)
 
@@ -39,30 +41,48 @@ If you want to use the OPDS feed don't forget to specify feed.php at the end of 
 
 # Prerequisites
 
-1. 	PHP 5.3, 5.4, 5.5, 5.6 or hhvm with GD image processing, Libxml, Intl, Json & SQLite3 support.
-2. 	A web server with PHP support. I only tested with various version of Nginx.
-    Other people reported it working with Apache and Cherokee. You can also use PHP
-    embedded server (https://github.com/seblucas/cops/wiki/Howto---PhpEmbeddedServer)
+1. 	PHP 5.3, 5.4, 5.5, 5.6, 7.X or hhvm with GD image processing, Libxml, Intl, Json & SQLite3 support (PHP 5.6 or later recommended).
+2. 	A web server with PHP support. I tested with various version of Nginx and Apache.
+    Other people reported it working with Apache and Cherokee. You can also use PHP embedded server (https://github.com/seblucas/cops/wiki/Howto---PhpEmbeddedServer)
 3.  The path to a calibre library (metadata.db, format, & cover files).
 
-On any Debian base Linux you can use :
+On any Debian based Linux you can use :
  aptitude install php5-gd php5-sqlite php5-json php5-intl
 
 On Centos you may have to add :
  yum install php-xml
 
-# Install
+# Install a release (Easiest way)
 
-1.  Extract the zip file to a folder in web space (visible to the web server).
+1.  Extract the zip file you got from [the release page](https://github.com/seblucas/cops/releases) to a folder in web space (visible to the web server).
 2.  If you're doing a first-time install, copy config_local.php.example to config_local.php
 3.  Edit config_local.php to match your config.
 4.  If needed add other configuration item from config_default.php
 
-If you choose to put your Calibre directory inside your web directory then you
-will have to edit /etc/nginx/mime.types to add this line :
-application/epub+zip epub;
-
 If you like Docker, you can also try [this project](https://github.com/linuxserver/docker-cops)
+
+# Install from sources
+
+```bash
+git clone https://github.com/seblucas/cops.git # or download lastest zip see below
+cd cops
+wget https://getcomposer.org/composer.phar
+php composer.phar global require "fxp/composer-asset-plugin:~1.1"
+php composer.phar install --no-dev --optimize-autoloader
+```
+
+After that you can use the previous how-to starting at the second step.
+
+Note that instead of cloning you can also get [latest master as zip](https://github.com/seblucas/cops/archive/master.zip)
+
+Note that if your PHP version is lower that 5.6, then you may have to remove `composer.lock` before starting the last line.
+
+# Where to put my Calibre directory ?
+
+Long story short : ALWAYS outside of COPS's directory especially if COPS is installed on a VPS / Server. If you follow my advice then your data will be safe.
+
+If you choose to put your Calibre directory inside your web directory and use Nginx then you will have to edit /etc/nginx/mime.types to add this line :
+`application/epub+zip epub;`
 
 # Known problems
 
@@ -86,8 +106,7 @@ Please read https://github.com/seblucas/cops/wiki and check the FAQ.
 External libraries used :
  * JQuery : http://jquery.com/
  * Magnific Popup : http://dimsemenov.com/plugins/magnific-popup/
- * Php-epub-meta : https://github.com/splitbrain/php-epub-meta with some modification by me
-                   https://github.com/seblucas/php-epub-meta
+ * Php-epub-meta : https://github.com/splitbrain/php-epub-meta with some modification by me (https://github.com/seblucas/php-epub-meta)
  * TbsZip : http://www.tinybutstrong.com/apps/tbszip/tbszip_help.html
  * DoT.js : http://olado.github.io/doT/index.html
  * PHPMailer : https://github.com/PHPMailer/PHPMailer
