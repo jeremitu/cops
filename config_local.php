@@ -26,13 +26,13 @@
       if (!$remote_user && array_key_exists('REMOTE_USER', $_SERVER))
         $remote_user = $_SERVER['REMOTE_USER'];
 
-        #$user .= $_SERVER['PHP_AUTH_USER'];
-	    # 19/Oct/2016:13:53:18 +0200
-	  $s = $ip . ' ' . $remote_user . ' [' . date('d/M/Y:h:i:s O') . '] ' . $string . ' ' . $_SERVER['REQUEST_URI'] . "\n";
+      #$user .= $_SERVER['PHP_AUTH_USER'];
+      # 19/Oct/2016:13:53:18 +0200
+      $s = $ip . ' ' . $remote_user . ' [' . date('d/M/Y:h:i:s O') . '] ' . $string . ' ' . $_SERVER['REQUEST_URI'] . "\n";
       // different dev/prod logs
       $log_file = $config['calibre_directory'] . '_Inbox/books.' . strtolower(substr(PHP_OS, 0, 3)) . '.log';
-	  file_put_contents($log_file, $s, FILE_APPEND);
-	}
+      file_put_contents($log_file, $s, FILE_APPEND);
+    }
 
     //mylog("Hello");
 
