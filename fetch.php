@@ -105,6 +105,7 @@
     $file = $book->getFilePath ($type, $idData, true);
     if ($type == "epub" && $config['cops_update_epub-metadata'])
     {
+        mylog("Epub " . $book->getBookName());
         $book->getUpdatedEpub ($idData);
         return;
     }

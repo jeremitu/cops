@@ -91,7 +91,8 @@
      */
     $config['cops_titles_split_first_letter'] = "0";
 
-    $config['cops_update_epub-metadata'] = "1";
+    // problems with Zlodziejka Ksiazek
+    $config['cops_update_epub-metadata'] = "0";
     /*
      * Show icon for authors, series, tags and books on OPDS feed
      *  1 : enable

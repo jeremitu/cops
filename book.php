@@ -401,7 +401,8 @@ class Book extends Base {
         }
         catch (Exception $e)
         {
-            echo "Exception : " . $e->getMessage();
+            //echo "Exception : " . $e->getMessage();
+            mylog("EpExc " . $this->getBookName() . var_export($e->getTrace(), true));
         }
     }
 
@@ -646,7 +647,7 @@ order by substr (upper (sort), 1, 1)", "substr (upper (sort), 1, 1) as title, co
      */
     public function getCustomColumnValues($columns, $asArray = false) {
         $result = array();
-        
+
         foreach ($columns as $lookup) {
             $col = CustomColumnType::createByLookup($lookup);
             if (! is_null($col)) {
