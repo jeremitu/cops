@@ -125,7 +125,8 @@ class Book extends Base {
         $this->pubdate = $line->pubdate;
         $this->path = Base::getDbDirectory () . $line->path;
         $this->relativePath = $line->path;
-        $this->seriesIndex = $line->series_index;
+        // JJ 2.0 was ugly
+        $this->seriesIndex = round($line->series_index);
         $this->comment = $line->comment;
         $this->uuid = $line->uuid;
         $this->hasCover = $line->has_cover;

@@ -102,18 +102,24 @@
             header("Content-Type: " . $data->getMimeType ());
             break;
     }
+
+    if ($type == "pdf" || $type == "epub") {
+        // Read in the browser
+        header('Content-Disposition: inline; filename="' . basename ($file) . '"');
+        mylog("Inline " . $book->getBookName());
+    } elseif ($type == "jpg") {
+        header('Content-Disposition: filename="' . basename ($file) . '"');
+    } else {
+        header('Content-Disposition: attachment; filename="' . basename ($file) . '"');
+        mylog("Download " . $book->getBookName());
+    }
+
     $file = $book->getFilePath ($type, $idData, true);
     if ($type == "epub" && $config['cops_update_epub-metadata'])
     {
         mylog("Epub " . $book->getBookName());
         $book->getUpdatedEpub ($idData);
         return;
-    }
-    if ($type == "jpg") {
-        header('Content-Disposition: filename="' . basename ($file) . '"');
-    } else {
-        header('Content-Disposition: attachment; filename="' . basename ($file) . '"');
-        mylog("Download " . $book->getBookName());
     }
 
     $dir = $config['calibre_internal_directory'];
