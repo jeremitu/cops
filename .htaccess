@@ -87,3 +87,6 @@ AuthType Basic
 Require valid-user
 #Allow from env=DEV
 </FilesMatch>
+
+# prohibit .git
+RedirectMatch 404 /\.git
